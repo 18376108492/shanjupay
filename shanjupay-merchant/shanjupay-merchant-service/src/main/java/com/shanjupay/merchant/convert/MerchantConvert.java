@@ -28,26 +28,26 @@ public interface MerchantConvert {
     List<MerchantDTO> entityList2dtoList(List<Merchant> merchants);
 
 
-    public static void main(String[] args) {
-        //将dto转成entity
-        Merchant merchant  =new Merchant();
-        merchant.setUsername("测试");
-        merchant.setMobile("123456");
-        MerchantDTO merchantDTO = MerchantConvert.INSTANCE.entity2dto(merchant);
-        System.out.println(merchantDTO);
-
-        //将entity转成dto
-        merchantDTO.setMerchantName("商户名称");
-        Merchant merchant1 = MerchantConvert.INSTANCE.dto2entity(merchantDTO);
-        System.out.println(merchant1);
-
-        //定义的list
-        List entityList = new ArrayList();
-        entityList.add(merchant);
-        //将lIST转成包含dto的list
-        List list = MerchantConvert.INSTANCE.entityList2dtoList(entityList);
-        System.out.println(list);
-
-    }
+//    public static void main(String[] args) {
+//        //将dto转成entity
+//        Merchant merchant  =new Merchant();
+//        merchant.setUsername("测试");
+//        merchant.setMobile("123456");
+//        MerchantDTO merchantDTO = MerchantConvert.INSTANCE.entity2dto(merchant);
+//        System.out.println(merchantDTO);
+//
+//        //将entity转成dto
+//        merchantDTO.setMerchantName("商户名称");
+//        Merchant merchant1 = MerchantConvert.INSTANCE.dto2entity(merchantDTO);
+//        System.out.println(merchant1);
+//
+//        //定义的list
+//        List entityList = new ArrayList();
+//        entityList.add(merchant);
+//        //将lIST转成包含dto的list
+//        List list = MerchantConvert.INSTANCE.entityList2dtoList(entityList);
+//        System.out.println(list);
+//
+//    }
 
 }

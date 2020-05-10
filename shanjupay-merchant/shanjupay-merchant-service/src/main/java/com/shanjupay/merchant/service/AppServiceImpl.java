@@ -39,39 +39,40 @@ public class AppServiceImpl implements AppService {
     @Override
     public AppDTO createApp(Long merchantId, AppDTO appDTO) throws BusinessException {
 
-        if(merchantId==null || appDTO== null || StringUtils.isBlank(appDTO.getAppName())){
-            throw new BusinessException(CommonErrorCode.E_300009);
-        }
-        //  1）校验商户是否通过资质审核
-        Merchant merchant = merchantMapper.selectById(merchantId);
-        if(merchant == null){
-            throw new BusinessException(CommonErrorCode.E_200002);
-        }
-        //取出商户资质申请状态
-        String auditStatus = merchant.getAuditStatus();
-        if(!"2".equals(auditStatus)){
-            throw new BusinessException(CommonErrorCode.E_200003);
-        }
-
-        // 应用名称需要校验唯一性
-        //传入的应用名称
-        String appName = appDTO.getAppName();
-        Boolean existAppName = isExistAppName(appName);
-        if (existAppName){
-            throw new BusinessException(CommonErrorCode.E_200004);
-        }
-
-        //2）生成应用ID
-        String appId = UUID.randomUUID().toString();
-
-        App entity = AppCovert.INSTANCE.dto2entity(appDTO);
-        entity.setAppId(appId);//应用id
-        entity.setMerchantId(merchantId);//商户id
-
-        //调用 appMapper向app表插入数据
-        appMapper.insert(entity);
-
-        return AppCovert.INSTANCE.entity2dto(entity);
+//        if(merchantId==null || appDTO== null || StringUtils.isBlank(appDTO.getAppName())){
+//            throw new BusinessException(CommonErrorCode.E_300009);
+//        }
+//        //  1）校验商户是否通过资质审核
+//        Merchant merchant = merchantMapper.selectById(merchantId);
+//        if(merchant == null){
+//            throw new BusinessException(CommonErrorCode.E_200002);
+//        }
+//        //取出商户资质申请状态
+//        String auditStatus = merchant.getAuditStatus();
+//        if(!"2".equals(auditStatus)){
+//            throw new BusinessException(CommonErrorCode.E_200003);
+//        }
+//
+//        // 应用名称需要校验唯一性
+//        //传入的应用名称
+//        String appName = appDTO.getAppName();
+//        Boolean existAppName = isExistAppName(appName);
+//        if (existAppName){
+//            throw new BusinessException(CommonErrorCode.E_200004);
+//        }
+//
+//        //2）生成应用ID
+//        String appId = UUID.randomUUID().toString();
+//
+//        App entity = AppCovert.INSTANCE.dto2entity(appDTO);
+//        entity.setAppId(appId);//应用id
+//        entity.setMerchantId(merchantId);//商户id
+//
+//        //调用 appMapper向app表插入数据
+//        appMapper.insert(entity);
+//
+//        return AppCovert.INSTANCE.entity2dto(entity);
+        return  null;
     }
 
     /**
@@ -83,8 +84,9 @@ public class AppServiceImpl implements AppService {
      */
     @Override
     public List<AppDTO> queryAppByMerchant(Long merchantId) throws BusinessException {
-        List<App> apps = appMapper.selectList(new LambdaQueryWrapper<App>().eq(App::getMerchantId, merchantId));
-        return AppCovert.INSTANCE.listentity2dto(apps);
+//        List<App> apps = appMapper.selectList(new LambdaQueryWrapper<App>().eq(App::getMerchantId, merchantId));
+//        return AppCovert.INSTANCE.listentity2dto(apps);
+        return null;
     }
 
     /**
@@ -96,13 +98,15 @@ public class AppServiceImpl implements AppService {
      */
     @Override
     public AppDTO getAppById(String appId) throws BusinessException {
-        App app = appMapper.selectOne(new LambdaQueryWrapper<App>().eq(App::getAppId, appId));
-        return AppCovert.INSTANCE.entity2dto(app);
+//        App app = appMapper.selectOne(new LambdaQueryWrapper<App>().eq(App::getAppId, appId));
+//        return AppCovert.INSTANCE.entity2dto(app);
+        return null;
     }
 
     //判断应用名称是否存在
     private Boolean isExistAppName(String appName){
-        Integer count = appMapper.selectCount(new LambdaQueryWrapper<App>().eq(App::getAppName, appName));
-        return count >0;
+//        Integer count = appMapper.selectCount(new LambdaQueryWrapper<App>().eq(App::getAppName, appName));
+//        return count >0;
+        return null;
     }
 }
