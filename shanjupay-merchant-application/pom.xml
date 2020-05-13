@@ -22,6 +22,8 @@
             <artifactId>shanjupay-transaction-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+
         <!-- Nacos配置中心 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

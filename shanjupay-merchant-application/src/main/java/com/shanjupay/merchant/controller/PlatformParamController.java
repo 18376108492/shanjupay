@@ -1,14 +1,8 @@
 package com.shanjupay.merchant.controller;
 
-import com.shanjupay.common.domain.BusinessException;
-import com.shanjupay.common.domain.CommonErrorCode;
-import com.shanjupay.merchant.common.util.SecurityUtil;
-import com.shanjupay.transaction.api.dto.PayChannelDTO;
-import com.shanjupay.transaction.api.dto.PayChannelParamDTO;
+import com.shanjupay.transaction.api.PlatformChannelService;
 import com.shanjupay.transaction.api.dto.PlatformChannelDTO;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
@@ -26,15 +20,15 @@ import java.util.List;
 @Slf4j
 public class PlatformParamController {
 
-//    @Reference
-//    PayChannelService payChannelService;
+    @Reference
+    PlatformChannelService platformPayChannelService;
 
 
-//    @ApiOperation("获取平台服务类型")
-//    @GetMapping(value="/my/platform-channels")
-//    public List<PlatformChannelDTO> queryPlatformChannel(){
-//        return payChannelService.queryPlatformChannel();
-//    }
+    @ApiOperation("获取平台服务类型")
+    @GetMapping(value="/my/platform-channels")
+    public List<PlatformChannelDTO> queryPlatformChannel(){
+        return platformPayChannelService.getAllPlatformChannel();
+    }
 
 //    @ApiOperation("绑定服务类型")
 //    @ApiImplicitParams({
@@ -43,7 +37,7 @@ public class PlatformParamController {
 //    })
 //    @PostMapping(value="/my/apps/{appId}/platform-channels")
 //    void bindPlatformForApp(@PathVariable("appId") String appId,@RequestParam("platformChannelCodes") String platformChannelCodes){
-//        payChannelService.bindPlatformChannelForApp(appId,platformChannelCodes);
+//        platformPayChannelService.bindPlatformChannelForApp(appId,platformChannelCodes);
 //    }
 
 //    @ApiOperation("查询应用是否绑定了某个服务类型")
@@ -53,14 +47,14 @@ public class PlatformParamController {
 //    })
 //    @GetMapping("/my/merchants/apps/platformchannels")
 //    public int queryAppBindPlatformChannel(@RequestParam String appId, @RequestParam String platformChannel){
-//        return payChannelService.queryAppBindPlatformChannel(appId,platformChannel);
+//        return platformPayChannelService.queryAppBindPlatformChannel(appId,platformChannel);
 //    }
 
 //    @ApiOperation("根据服务类型查询支付渠道")
 //    @ApiImplicitParam(name = "platformChannelCode", value = "服务类型代码", required = true, dataType = "String", paramType = "path")
 //    @GetMapping(value="/my/pay-channels/platform-channel/{platformChannelCode}")
 //    List<PayChannelDTO> queryPayChannelByPlatformChannel(@PathVariable("platformChannelCode") String platformChannelCode) throws BusinessException{
-//        return payChannelService.queryPayChannelByPlatformChannel(platformChannelCode);
+//        return platformPayChannelService.queryPayChannelByPlatformChannel(platformChannelCode);
 //
 //    }
 
@@ -74,7 +68,7 @@ public class PlatformParamController {
 //        //商户id
 //        Long merchantId = SecurityUtil.getMerchantId();
 //        payChannelParamDTO.setMerchantId(merchantId);
-//        payChannelService.savePayChannelParam(payChannelParamDTO);
+//        platformPayChannelService.savePayChannelParam(payChannelParamDTO);
 //
 //    }
 
@@ -85,7 +79,7 @@ public class PlatformParamController {
 //    })
 //    @GetMapping(value = "/my/pay-channel-params/apps/{appId}/platform-channels/{platformChannel}")
 //    public  List<PayChannelParamDTO> queryPayChannelParam(@PathVariable("appId")String appId,@PathVariable("platformChannel")String platformChannel){
-//        return payChannelService.queryPayChannelParamByAppAndPlatform(appId,platformChannel);
+//        return platformPayChannelService.queryPayChannelParamByAppAndPlatform(appId,platformChannel);
 //    }
 
 //    @ApiOperation("根据应用和服务类型和支付渠道获取单个支付渠道参数")
@@ -96,7 +90,7 @@ public class PlatformParamController {
 //    })
 //    @GetMapping(value = "/my/pay-channel-params/apps/{appId}/platform-channels/{platformChannel}/pay-channels/{payChannel}")
 //    public  PayChannelParamDTO queryPayChannelParam(@PathVariable("appId")String appId,@PathVariable("platformChannel")String platformChannel,@PathVariable("payChannel") String payChannel){
-//        return payChannelService.queryParamByAppPlatformAndPayChannel(appId,platformChannel,payChannel);
+//        return platformPayChannelService.queryParamByAppPlatformAndPayChannel(appId,platformChannel,payChannel);
 //    }
 
 }

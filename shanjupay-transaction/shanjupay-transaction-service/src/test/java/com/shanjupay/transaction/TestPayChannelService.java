@@ -20,7 +20,7 @@ import java.util.List;
 public class TestPayChannelService {
 
     // @Autowired
-    //PayChannelService payChannelService;
+    //PlatformChannelService payChannelService;
 
     //测试根据服务类型查询支付渠道
 //    @Test

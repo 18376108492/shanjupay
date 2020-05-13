@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+<module type="JAVA_MODULE" version="4">
+  <component name="ExternalSystem" externalSystem="Maven" />
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
       <configuration />
@@ -27,6 +28,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="shanjupay-merchant-api" />
+    <orderEntry type="module" module-name="shanjupay-common" />
+    <orderEntry type="module" module-name="shanjupay-transaction-api" />
     <orderEntry type="module" module-name="shanjupay-merchant-api" />
     <orderEntry type="module" module-name="shanjupay-common" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.47" level="project" />
